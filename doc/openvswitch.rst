@@ -2,22 +2,25 @@
 OVS Topology Node
 =================
 
-Open vSwitch Kernel Module 
+Open vSwitch Kernel Module
 --------------------------
-Open vSwitch requires the openvswitch kernel module to be loaded in the host 
-machine. The OVS images should work in user space mode without the module 
-but this experimental mode was not working in Docker at the time of 
-writing. The recommended way to run OVS is to first install the module included 
-with the corresponding OVS release. Check the docker image's OVS version by 
-looking at its tag or spawning a container. `Download <http://openvswitch.org/download/>`_ 
-the corresponding OVS version, build OVS and load the kernel module:
+
+Open vSwitch requires the openvswitch kernel module to be loaded in the host
+machine. The OVS images should work in user space mode without the module
+but this experimental mode was not working in Docker at the time of writing.
+The recommended way to run OVS is to first install the module included with the
+corresponding OVS release. Check the docker image's OVS version by looking at
+its `tag <https://hub.docker.com/r/topology/openvswitch/tags/>`_ or spawning a
+container. Then `download <http://openvswitch.org/releases/>`_ the corresponding
+OVS version, build OVS and load the kernel module:
 
 ::
 
-   ./configure --with-linux=/lib/modules/`uname -r`/build`
+   ./configure --with-linux=/lib/modules/`uname -r`/build
    make
-   make modules_install
-   /sbin/modprobe openvswitch
+   sudo make modules_install
+   sudo rmmod openvswitch  # If already loaded
+   sudo modprobe openvswitch
 
 Check the `OVS FAQ <https://github.com/openvswitch/ovs/blob/master/FAQ.md#q-what-linux-kernel-versions-does-each-open-vswitch-release-work-with>`_ for information on kernel version support.
 
@@ -26,7 +29,7 @@ Using Open vSwitch Nodes
 
 The OpenvSwitch node in Topology looks for the
 ``socketplane/openvswitch:latest`` docker image by default. The only shell
-available to OpenvSwitch is bash, which allows running:
+available to OpenvSwitch is busybox sh, which allows running:
 
 - ``ovs-appclt`` commands, to control the OVS daemon.
 - ``ovs-oftcl``, to configure OpenFlow.
