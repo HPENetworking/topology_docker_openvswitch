@@ -2,6 +2,7 @@
    :hidden:
 
    developer
+   openvswitch
    topology_docker_openvswitch/topology_docker_openvswitch
 
 ====================================
@@ -14,6 +15,7 @@ A Topology OpenSwitch Node for topology_docker.
 Documentation
 =============
 
+- :doc:`Node documentation. <openvswitch>`
 - :doc:`Developer Guide. <developer>`
 - :doc:`Internal Documentation Reference. <topology_docker_openvswitch/topology_docker_openvswitch>`
 
