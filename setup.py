@@ -73,7 +73,10 @@ setup(
         'A Topology OpenSwitch Node for topology_docker.'
     ),
     long_description=read('README.rst'),
-    url='https://github.com/HPENetworking/topology_docker_openvswitch/tree/master/doc',
+    url=(
+        'https://github.com/HPENetworking/'
+        'topology_docker_openvswitch/tree/master/doc'
+    ),
     keywords='topology_docker_openvswitch',
 
     classifiers=[
@@ -91,7 +94,8 @@ setup(
     # Entry points
     entry_points={
         'topology_docker_node_10': [
-            'openvswitch = topology_docker_openvswitch.openvswitch:OpenvSwitchNode'
+            'openvswitch = '
+            'topology_docker_openvswitch.openvswitch:OpenvSwitchNode'
         ]
     }
 )
